@@ -32,7 +32,7 @@ function playRound(){
 	return player, computer;
 }
 
-function decideWinner(roundWinner){
+function decideWinner(){
 		var player = playerRoll();
 		var computer = computerRoll();
 			if (player === computer){
@@ -40,13 +40,13 @@ function decideWinner(roundWinner){
 			}else if ((40-player || player-40) === (40-computer || computer-40)){
 				return alert ("Totals are equidistant from 40. Please roll again.");
 			}else if (player === 40){
-				playerScore == playerScore * 2;
+				playerScore *= 2;
 				alert ("Your total is " + player + ", your points double! Your score is "+ playerScore);
-				return playerScore++;
+				return playerScore*2;
 			}else if (computer === 40){
-				computerScore == computerScore * 2;
+				computerScore *= 2;
 				alert ("Computer total is " + computer + ", computer's points double. Computer's score is " + computerScore);
-				return computerScore++;
+				return computerScore*2;
 			}else if ((40-player || player-40) < (40-computer || computer-40)){
 				playerScore == playerScore + 1;
 				alert ("Your total is " + player + ". You win this round! Your score is " + playerScore);
@@ -59,9 +59,9 @@ function decideWinner(roundWinner){
 }
 function playGame(){
 	var start = startGame();
-	while (playerScore<11 || computerScore<11){
+	while (playerScore<11 && computerScore<11){
 		var round = playRound();
-		decideWinner(playRound);	
+		decideWinner(round);
 	}
 }
 
